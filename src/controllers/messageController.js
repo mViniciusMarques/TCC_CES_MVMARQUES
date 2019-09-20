@@ -3,13 +3,19 @@ const Message = require('../model/message')
 
 const router = express.Router();
 
+
+
 router.get('/teste', (req, res) => {
     console.log('motorama');
     
-       Message.find().limit(10).then( (result) =>{
-       console.log('result');    
+     Message.collection().find().limit(10).then(result => {
        console.log(result)
-       })
+     })
+
+     Message.count().then((x) => {
+         console.log(x)
+     })
+
      res.send({status: 'pk'})
 })
 

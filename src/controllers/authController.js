@@ -14,6 +14,11 @@ function generateToken(params = {} ) {
 
 router.post('/register', async(req, res) => {
     try {
+        console.log(req.body)
+        const { email } = req.body
+
+        
+        
         if(await User.findOne({ email })) {
             return res.status(400).send({ error: 'User already exists'});
         }
@@ -26,6 +31,8 @@ router.post('/register', async(req, res) => {
                          token: generateToken({id: user.id})
             });
     } catch(err) {
+        console.log(err)
+        process.exit(1)
         return res.status(400).send({ error: 'Registration failed'})
     }
 })
@@ -48,5 +55,19 @@ router.post('/authenticate', async(req, res) => {
     res.send({ user, 
                token: generateToken({ id: user.id }) });
 });
+
+router.get('/teste', (req, res) => {
+    console.log('motorama');
+    
+     User.find().limit(10)
+    .then(result => {
+       console.log(result);
+      return  res.send({teste: result})
+     })
+
+     //res.send({ssta: s})
+
+     // res.send({status: 'pk'})
+})
 
 module.exports = app => app.use('/auth', router);
