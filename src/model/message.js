@@ -2,11 +2,6 @@ const mongoose = require('../database');
 const bcrypt = require('bcryptjs')
 
 const MessageSchema = new mongoose.Schema({
-    _id: {
-        type: String,
-        required: false,
-        auto: true
-    },
     topic: {
         type: String,
         require: false
@@ -17,9 +12,6 @@ const MessageSchema = new mongoose.Schema({
     }
 });
 
-
-console.log(mongoose.ConnectionStates)
-
-const Message = mongoose.model('message ', MessageSchema);
+const Message = mongoose.model('message', MessageSchema);
 
 module.exports = Message;

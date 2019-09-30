@@ -4,12 +4,12 @@ var count = 0;
 
 const q = mqttConnect()
 console.log(q.connected)
-console.log( mqttConfig.CLIENT_ID)
+
+
 
 function mqttClient() {
     const client  = this.mqttConnection
     client.reconnect()
-                                                            console.log("connected flag  " + client.connected);
 
 //handle incoming messages
 
@@ -23,17 +23,21 @@ function mqttClient() {
     console.log("connected  "+ client.connected);
 
     })
+
+    if(client.connected){
+        this.publish('Remo','ATIVO')
+    }
     //handle errors
     client.on("error",function(error){
     console.log("Can't connect" + error);
     process.exit(1)});
     //publish
 
-    function publish(topic,msg,options){
+    function publish(topic,msg){
     console.log("publishing",msg);
     if (client.connected == true){
         console.log('attack em mothafucker')
-        client.publish("nodeB",msg,options);
+        client.publish(topic,msg,options);
 
     } else {
         console.log('tei')

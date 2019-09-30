@@ -8,15 +8,23 @@ const router = express.Router();
 router.get('/teste', (req, res) => {
     console.log('motorama');
     
-     Message.collection().find().limit(10).then(result => {
-       console.log(result)
+     Message.find().limit(10).then(result => {
+       return res.send({status: result})
      })
+   //  res.send({status: 'pk'})
+})
 
-     Message.count().then((x) => {
-         console.log(x)
-     })
+router.post('/salvar', (req, res) => {
+  console.log('salvar message');
+  
+  // res.send({ 
+  //   topic: 'cain',
+  //   message: 'romulo'
+  // });
 
-     res.send({status: 'pk'})
+  Message.create(req.body).then( () => {
+    res.send('sucesso')
+  }).catch( err => res.send(err))
 })
 
 module.exports = app => app.use('/messages', router);
