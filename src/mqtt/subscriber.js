@@ -21,7 +21,6 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
     //console.log(con.connected)   
     if(!con.connected) {
         con.reconnect();
-    
     }    
     
     con.subscribe(topic_list,options)
