@@ -32,4 +32,6 @@ app.use(routes);
 
 
 
-server.listen(3333);
+const porta = process.env.PORT || 3333;
+console.log(porta)
+app.listen(porta);
