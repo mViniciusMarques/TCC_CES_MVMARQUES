@@ -31,5 +31,65 @@ module.exports = {
 
     async remoHealthCheck(req, res) {
         mqttPublisher.publishRemoHealthCheck(req);
-    }
+        res.json('OK')
+    },
+
+    async remoTemperature(req, res) {
+        mqttPublisher.publishTemperatureSensor(req);
+        
+        setTimeout(() => {
+              res.json('OK');
+        }, 1000);
+      
+    },
+
+    async remoVibration(req, res) {
+        mqttPublisher.publishVibrationSensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    async remoGasConcentration(req, res) {
+        mqttPublisher.publishGasConcentrationSensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    async remoHumity(req, res) {
+        mqttPublisher.publishHumitySensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    async remoSoilHumitySensor(req, res) {
+        mqttPublisher.publishSoilHumitySensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    async remoWaterSensor(req, res) {
+        mqttPublisher.publishWaterDetectorSensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    async remoAirPressureSensor(req, res) {
+        mqttPublisher.publishAirPressureSensor(req);
+        
+        setTimeout(() => {
+            res.json('OK');
+      }, 1000);
+    },
+
+    
  }
