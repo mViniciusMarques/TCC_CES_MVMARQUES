@@ -25,7 +25,11 @@ const topic_list=["Remo/Gas'",
                   'Cain/FGasConcetration',
                   'Cain/FSoilHumity',
                   'Cain/FWater',
+                  'Abel/SoilHumity',
+                  'Abel/Vibration',
+                  'Abel/Water'
                 ];
+
 console.log('======= up por node cam')
 
 const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
